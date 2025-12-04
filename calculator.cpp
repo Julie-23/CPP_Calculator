@@ -50,6 +50,7 @@ public:
              std::cin >> divisor;
             cin >> divisor;
         }
+        quotient = dividend / divisor;
         return quotient;
     };
 };
@@ -57,8 +58,33 @@ public:
 int main(){
     Calculator calc;
     
-    std::vector<float> nums = {10.0, 5.0, 2.0};
+    std::string choice_op;
+    std::cout<<"Enter the operation you wish to use:\nA = Addition\nS = Subtraction\nM = Multiplication\nD = Division\n Enter: ";
+    std::cin>>choice_op;
 
+    int num_numbers;
+    std::vector<float> nums = {};
+    std::cout<<"How many numbers would you like to input? ";
+    std::cin >> num_numbers;
+
+    for(int i = 0; i < num_numbers; i++){
+        float num;
+        std::cout << "Enter number " << i+1 << ": ";
+        std::cin >> num;
+        nums.push_back(num);
+    }
+
+    if (choice_op == "A" || choice_op == "a"){
+        std::cout << "Addition: " << calc.addition(nums) << endl;
+    } else if (choice_op == "S" || choice_op == "s"){
+        std::cout << "Subtraction: " << calc.subtraction(nums) << endl;
+    } else if (choice_op == "M" || choice_op == "m"){
+        std::cout << "Multiplication: " << calc.multiplication(nums) << endl;
+    } else if (choice_op == "D" || choice_op == "d"){
+        std::cout << "Division: " << calc.division() << endl;
+    }
+
+    
     std::cout << "Addition: " << calc.addition(nums) << endl;
     std::cout << "Subtraction: " << calc.subtraction(nums) << endl;
     std::cout << "Multiplication: " << calc.multiplication(nums) << endl;
